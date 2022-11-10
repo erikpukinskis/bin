@@ -1,3 +1,5 @@
+#!/bin/bash
+
 USAGE=$(cat <<-END
 Usage:
   b             list all git branches, sorted by most recently edited
