@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+# command='echo -e "redact kernel-cbb32\nredact foo=bar&SID=blahblah&mix=max"'
+command="script -q /dev/null zsh -c '$command$*' | sed"
+
+replacements=(
+    'database=.*&::database=██████\&'
+    'SID=.*&::SID=██████\&'
+    '&zx=.*&::&zx=██████\&'
+    'yarn::λarn'
+)
+
+for index in "${replacements[@]}" ; do
+    KEY="${index%%::*}"
+    VALUE="${index##*::}"
+
+    command="$command -e 's/$KEY/$VALUE/'"
+done
+
+# echo $command
+eval $command
