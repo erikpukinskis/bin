@@ -1,5 +1,6 @@
 # ~/bin
 export PATH=~/bin:$PATH
+export TERM=xterm-256color
 
 # Prompt
 autoload -Uz vcs_info
